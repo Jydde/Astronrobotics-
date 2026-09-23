@@ -1,0 +1,426 @@
+/* Astron Robotics — dark futuristic marketing site (original implementation) */
+
+:root {
+  --cyan: #00c3ff;
+  --accent: #00c3ff;
+  --accent-soft: rgba(0, 195, 255, 0.12);
+  --accent-ink: #bfeeff;
+  --text: #ffffff;
+  --muted: #d1e8ff;
+  --text-soft: #d1e8ff;
+  --text-faint: rgba(209, 232, 255, 0.62);
+  --panel: rgba(8, 12, 24, 0.78);
+  --panel-2: rgba(12, 18, 36, 0.9);
+  --border: rgba(0, 195, 255, 0.28);
+  --warn: #ffb45a;
+  --warn-soft: rgba(255, 180, 90, 0.14);
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body, html {
+  width: 100%;
+  min-height: 100%;
+  font-family: "Montserrat", sans-serif;
+  background-color: #000;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+body.is-splash { 
+  overflow: hidden; 
+  height: 100vh; 
+}
+
+.bg-image {
+  position: fixed;
+  top: -5%;
+  left: -5%;
+  width: 110%;
+  height: 110%;
+  background-image: url("../img/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+  animation: breathe 30s infinite alternate ease-in-out;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(10, 15, 30, 0.3) 0%, rgba(5, 5, 10, 0.88) 70%);
+  z-index: 2;
+}
+
+#particles {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+@keyframes breathe {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+
+.site-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 28px;
+  background: rgba(5, 8, 18, 0.6);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 1.05rem;
+  text-shadow: 0 0 16px rgba(0, 195, 255, 0.6);
+}
+
+.site-links { 
+  display: flex; 
+  gap: 8px; 
+}
+.site-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  transition: all 0.2s ease;
+}
+.site-links a:hover { 
+  color: var(--text); 
+  background: var(--accent-soft);
+}
+.site-links a.is-active {
+  color: var(--text);
+  border-color: var(--cyan);
+  background: rgba(0, 195, 255, 0.1);
+  box-shadow: 0 0 12px rgba(0, 195, 255, 0.3);
+}
+
+.content {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  padding: 0 20px;
+}
+
+h1.splash-title {
+  font-size: clamp(3.5rem, 8vw, 6.5rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 1.2rem;
+  text-shadow: 0 0 30px rgba(0, 195, 255, 0.7), 0 0 60px rgba(0, 195, 255, 0.4);
+  animation: fadeInDown 1.8s ease-out forwards;
+  opacity: 0;
+}
+
+.splash-lead {
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 300;
+  max-width: 620px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  opacity: 0;
+  animation: fadeInUp 1.8s ease-out 0.6s forwards;
+  line-height: 1.4;
+}
+
+.pulse {
+  margin-top: 60px;
+  width: 14px;
+  height: 14px;
+  background-color: var(--cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(0, 195, 255, 0.7);
+  animation: pulse-glow 2s infinite, fadeIn 2s ease-out 1.2s forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInDown { 
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  } 
+}
+@keyframes fadeInUp { 
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  } 
+}
+@keyframes fadeIn { 
+  to { opacity: 1; } 
+}
+@keyframes pulse-glow {
+  0% { 
+    transform: scale(0.8); 
+    box-shadow: 0 0 0 0 rgba(0, 195, 255, 0.7); 
+  }
+  70% { 
+    transform: scale(1.2); 
+    box-shadow: 0 0 0 25px rgba(0, 195, 255, 0); 
+  }
+  100% { 
+    transform: scale(0.8); 
+    box-shadow: 0 0 0 0 rgba(0, 195, 255, 0); 
+  }
+}
+
+/* Shared board/catalog styles */
+.board-page, .catalog-page {
+  position: relative;
+  z-index: 4;
+  padding: 100px 24px 60px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--cyan);
+  margin-bottom: 12px;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  text-shadow: 0 0 20px rgba(0, 195, 255, 0.4);
+}
+
+.lead {
+  color: var(--muted);
+  font-weight: 300;
+  font-size: 1.1rem;
+  max-width: 60ch;
+  line-height: 1.6;
+}
+
+/* Robot catalog cards */
+.robot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+  padding: 40px 0;
+}
+
+.robot-card {
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  backdrop-filter: blur(10px);
+}
+
+.robot-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--cyan);
+  box-shadow: 0 20px 40px -15px rgba(0, 195, 255, 0.25);
+}
+
+.robot-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  background: #0a1422;
+}
+
+.robot-card .card-body {
+  padding: 24px;
+}
+
+.robot-card h3 {
+  font-size: 1.35rem;
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+
+.robot-card .blurb {
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.55;
+  margin-bottom: 18px;
+  font-weight: 300;
+}
+
+.maturity-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+  border: 1px solid var(--border);
+}
+
+/* Kanban styles */
+.kanban-board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  align-items: start;
+}
+
+.kanban-col {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(12px);
+}
+
+.kanban-col-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 195, 255, 0.05);
+}
+
+.kanban-col-header h2 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.col-count {
+  background: rgba(0, 195, 255, 0.15);
+  color: var(--cyan);
+  font-size: 0.75rem;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.kanban-col-body {
+  flex: 1;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+}
+
+.kanban-card {
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  cursor: grab;
+  transition: border-color 0.2s ease;
+  user-select: none;
+}
+
+.kanban-card:hover {
+  border-color: var(--cyan);
+}
+
+.kanban-card h4 {
+  font-size: 1.05rem;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.kanban-card p {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--text-faint);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .site-bar {
+    padding: 16px 20px;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .robot-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  h1.splash-title {
+    font-size: 3.2rem;
+    letter-spacing: 4px;
+  }
+  .splash-lead {
+    font-size: 1.05rem;
+  }
+  .bg-image {
+    background-position: 30% center;
+  }
+  .kanban-board {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-image, .pulse, h1.splash-title, .splash-lead {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* Footer */
+.site-footer {
+  position: relative;
+  z-index: 5;
+  padding: 40px 24px 60px;
+  text-align: center;
+  color: var(--text-faint);
+  font-size: 0.85rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  border-top: 1px solid var(--border);
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robotter | Astron Robotics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+
+    <div class="bg-image"></div>
+    <div class="overlay"></div>
+
+    <header class="site-bar">
+        <a class="logo" href="index.html">Astron Robotics</a>
+        <nav class="site-links" aria-label="Hovedmenu">
+            <a href="index.html">Home</a>
+            <a class="is-active" href="robotter.html" aria-current="page">Robotter</a>
+            <a href="projekter.html">Projekter</a>
+        </nav>
+    </header>
+
+    <main class="catalog-page board-page">
+        <div class="board-hero">
+            <p class="eyebrow">Vores flåde</p>
+            <h1>Humanoid robotter under udvikling</h1>
+            <p class="lead">Vi designer, bygger og tester næste generations robotter til konstruktion, vedligehold og farlige opgaver på byggepladser. Hver robot har specifikke styrker og modenhedsniveauer.</p>
+        </div>
+
+        <div class="robot-grid">
+            <!-- Original placeholder cards -->
+            <div class="robot-card">
+                <img src="img/atlas.jpg" alt="Atlas humanoid robot" style="filter: brightness(0.85);">
+                <div class="card-body">
+                    <h3>Atlas-X</h3>
+                    <p class="blurb">Vores flagskib humanoid. Avanceret balance, præcision og styrke til tunge løft og montage på byggepladser.</p>
+                    <span class="maturity-tag">Prototype</span>
+                </div>
+            </div>
+
+            <div class="robot-card">
+                <div class="card-body" style="height: 220px; background: linear-gradient(135deg, #0a1f38, #112b4a); display: flex; align-items: center; justify-content: center; color: var(--cyan); font-size: 4rem; font-weight: 700; letter-spacing: -4px;">ORION</div>
+                <div class="card-body">
+                    <h3>Orion Walker</h3>
+                    <p class="blurb">Bipede gå-robot til terrængående opgaver. Udviklet til inspektion, overvågning og lette byggeopgaver i ujævnt terræn.</p>
+                    <span class="maturity-tag">Koncept</span>
+                </div>
+            </div>
+
+            <div class="robot-card">
+                <div class="card-body" style="height: 220px; background: #0c1628; display: flex; align-items: center; justify-content: center;">
+                    <span style="font-size: 6rem; opacity: 0.15; color: #00c3ff;">⚙️</span>
+                </div>
+                <div class="card-body">
+                    <h3>Forge Arm</h3>
+                    <p class="blurb">Specialiseret arm-manipulator til præcis svejsning, boring og materialehåndtering. Integreres med eksisterende byggeudstyr.</p>
+                    <span class="maturity-tag">Pilot</span>
+                </div>
+            </div>
+
+            <div class="robot-card">
+                <div class="card-body" style="height: 220px; background: linear-gradient(#111827, #1e2937); display: flex; align-items: center; justify-content: center; font-size: 5.5rem;">🤖</div>
+                <div class="card-body">
+                    <h3>Neo Hauler</h3>
+                    <p class="blurb">Stærk transport- og logistikrobot. Kan bære op til 250 kg materialer autonomt over byggepladser.</p>
+                    <span class="maturity-tag">In Development</span>
+                </div>
+            </div>
+
+            <div class="robot-card">
+                <div class="card-body" style="height: 220px; background: #02070f; display: grid; place-items: center; font-size: 120px; opacity: 0.6;">🔧</div>
+                <div class="card-body">
+                    <h3>Scout MK2</h3>
+                    <p class="blurb">Letvægts inspektionsrobot med kameraer, sensorer og AI til sikkerhedschecks og 3D-mapping af byggepladser.</p>
+                    <span class="maturity-tag">Beta</span>
+                </div>
+            </div>
+
+            <div class="robot-card">
+                <div class="card-body" style="height: 220px; background: radial-gradient(#1a2538, #0a1322); display: flex; align-items: center; justify-content: center; color: #00c3ff; font-size: 4.5rem;">H</div>
+                <div class="card-body">
+                    <h3>Horizon Series</h3>
+                    <p class="blurb">Fremtidig familie af alsidige humanoide robotter. Modulær design til hurtig tilpasning til nye byggeopgaver.</p>
+                    <span class="maturity-tag">Research</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        Astron Robotics — originale designs • uafhængig udvikling • fokus på sikkerhed og praktisk anvendelse i byggeriet
+    </footer>
+
+    <script>
+        // Simple active nav highlight on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.site-links a');
+            const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPath) {
+                    link.classList.add('is-active');
+                } else {
+                    link.classList.remove('is-active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

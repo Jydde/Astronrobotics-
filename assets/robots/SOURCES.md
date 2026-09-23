@@ -10,7 +10,7 @@ Samme tabel-konvention som [Website Frontend/assets/robots/SOURCES.md](../../Web
 | figure-03.webp | [humanoid.guide/product/figure-03](https://humanoid.guide/product/figure-03/) | Tredjeparts render, ikke fra Figure AI selv |
 | unitree-g1.jpg | [unitree.com/g1](https://www.unitree.com/g1) | Officiel produkt-render, gående sideprofil (Unitree) |
 | brokk.jpg | Genereret katalogfoto (Imagine), efter Brokks Brokk 200+ produktfoto | Illustration af den gule Brokk 200+ med stabilisatorer ude og BHB 305 — samme maskine som anatomi-modellen, ikke et officielt Brokk-foto |
-| dusty-fieldprinter.jpg | Genereret katalogfoto (Imagine) | Illustration af hvid layout-robot der printer på dæk — ikke et officielt Dusty-foto |
+| dusty-fieldprinter.jpg | Genereret katalogfoto (Imagine), efter Dustys foto af FieldPrinter 2 | Grå kasse med hjul og reflektorkugle på dæk — samme maskine som anatomi-modellen, ikke et officielt Dusty-foto |
 | hilti-jaibot.jpg | Genereret katalogfoto (Imagine) | Illustration af rød loftborerobot — ikke et officielt Hilti-foto |
 | acr-tybot.jpg | Genereret katalogfoto (Imagine) | Illustration af gul armerings-gantry over brodæk — ikke et officielt ACR-foto |
 | sam100.jpg | Genereret katalogfoto (Imagine) | Illustration af orange mure-robot på stillads — ikke et officielt Construction Robotics-foto |

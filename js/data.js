@@ -314,7 +314,7 @@ var ROBOTS = [
     category: "jobsite",
     status: "I brug",
     tagline: "Printer BIM-layout direkte på betondækket — vægge, åbninger og MEP",
-    image: "assets/robots/dusty-fieldprinter.jpg",
+    image: "assets/robots/dusty-fieldprinter.jpg?v=fp2",
     youtube: "cT_hoqj8f40",
     specs: {
       type: "Autonom layout-robot til betondæk",
@@ -1097,49 +1097,47 @@ var BROKK_ANATOMY_SOURCES = [
 
 /*
  * PRINTER_ANATOMY — Dusty FieldPrinter layout-robot.
- * 3D er en skematisk rekonstruktion ud fra Dustys egne fotos, FCC-manual
- * og support-artikler (ikke officiel CAD). Tal er FieldPrinter / FieldPrinter 2.
+ * 3D følger Dustys publicerede foto af FieldPrinter 2 (hjul, ikke bælter).
+ * Ikke officiel CAD. Tal er FieldPrinter 2.
  */
 var PRINTER_ANATOMY_INTRO = {
   id: "overview",
   label: "FieldPrinter anatomi",
   category: "Oversigt",
   description:
-    "FieldPrinter er en bæltegående layout-robot, der printer BIM 1:1 på betondækket. " +
-    "Den kører ikke på hjul i den gængse feltudgave: to gummibælter, en hvid/grå kasse " +
-    "med computer og batteri, sensorer og en Leica-reflektor på toppen, og et printhoved " +
-    "der hænger bagud ned til slaben. Positionen kommer udefra — en laser tracker sigter " +
-    "på reflektor-kuglen, IMU og encodere holder den imellem. Printhovedet har sit eget " +
-    "servo-tværtrin, så 1/16″ nøjagtighed ikke afhænger af bæltets slør. 3D-modellen er " +
-    "skematisk, bygget efter offentlige fotos og FCC-manualens komponentliste.",
+    "FieldPrinter 2 er den kompakte layout-robot på Dustys eget foto: grå kasse, " +
+    "to hvide ringe på forsiden, orange hjørne, reflektorkugle på toppen og hjul " +
+    "i siden. Den printer BIM 1:1 på betondækket. Positionen kommer udefra — en " +
+    "laser tracker sigter på reflektor-kuglen, IMU og encodere holder den imellem. " +
+    "To forhjul drives; baghjulet er passivt. 3D-modellen er målt op efter det foto, " +
+    "ikke officiel CAD.",
   specs: [
-    "Bælteplatform + printhoved; layout ±1/16″ (1,6 mm) ved 600 DPI",
-    "Position: Leica-tracker på reflektor + IMU/encodere; printhoved-servo ±25 mm tværs",
+    "FieldPrinter 2: ca. 23 lb med batteri; to drevne forhjul, passivt baghjul",
+    "Layout ±1/16″ (1,6 mm); Dusty angiver 600 DPI på den aktuelle produktside",
+    "Position: Leica-tracker på reflektorkuglen + IMU/encodere",
     "System: robot + tracker + radio + Dusty iPad-app + Dusty Portal (Revit/AutoCAD)",
-    "Print: linjer, tekst, symboler, QR; vand- eller solventbaseret blæk",
-    "3D: skematisk rekonstruktion. Tal: Dusty support, FCC-manual, produktsider"
+    "3D: rekonstruktion af Dustys FieldPrinter 2-foto. Tal: Dusty, FCC-manual, PMD"
   ]
 };
 
 var PRINTER_ANATOMY = [
   {
-    id: "tracks",
-    label: "Bælter",
+    id: "wheels",
+    label: "Hjul",
     category: "Kørsel",
     description:
-      "FieldPrinter kører på to korte gummibælter, ikke på hjul. Bælterne giver greb " +
-      "på fejet beton, krydser armeringsstøtter og små niveauspring, og holder " +
-      "printhovedet i en jævn højde over slaben. Odometrien i bæltet er grov — i " +
-      "størrelsesordenen centimeter — og er netop derfor ikke det, der giver 1/16″. " +
-      "Hjulslør og encoder-drift kompenseres af trackeren. Dusty kræver fejet dæk, " +
-      "så blækket hæfter, og advarer mod kanter og pytter. Robotten printer på hældning " +
-      "op til en grænse; derover må den holde stille. Bælterne er det, der gør en " +
-      "layout-robot til en pladsmaskine i stedet for et stativ.",
+      "FieldPrinter 2 kører på hjul, ikke på bælter. Performance Motion Devices, " +
+      "som leverer motorstyringen, beskriver to drevne forhjul med børsteløse " +
+      "motorer og et passivt baghjul. På Dustys foto sidder det store hjul ude " +
+      "i siden af den grå kasse, og små fødder holder bunden over slaben. " +
+      "Odometrien i hjulene er grov og er ikke det, der giver 1/16″ — trackeren " +
+      "retter den. Dusty kræver fejet dæk, så blækket hæfter, og printer på " +
+      "hældning op til omkring 10 procent; derover stopper den.",
     specs: [
-      "To gummibælter; grov odometri (~cm) kompenseres af laser tracker",
-      "Kræver fejet slab; ikke print i pytter eller ude over kanter",
-      "Hældning: print op til en specificeret grænse, idle derover (Dusty support)",
-      "Bælterne holder printhovedets arbejdshøjde over dækket"
+      "To drevne forhjul, ét passivt baghjul (PMD om FieldPrinter 2)",
+      "Ca. 23 lb inklusive batteri (Dustys lancering af FieldPrinter 2)",
+      "Kræver fejet slab; print op til ca. 10 % hældning (Dusty support)",
+      "Hjul-odometri er grov; laser trackeren holder 1/16″"
     ]
   },
   {
@@ -1154,9 +1152,9 @@ var PRINTER_ANATOMY = [
       "entreprenøren kører det selv efter at have sat mindst tre kontrolpunkter, der " +
       "ikke ligger på linje. Path planning og obstacle avoidance kører ombord, så " +
       "robotten printer tæt på vægge (1,25″ langs, 0,825″ foran) og går uden om rod. " +
-      "Kassen er hvid over, grå under, med refleksstriber — synlig på et dæk fuld af folk.",
+      "På FieldPrinter 2-fotoet er kassen grå med et orange hjørne og to hvide ringe på forsiden.",
     specs: [
-      "Onboard computer + radio + batteri i hvid/grå kasse",
+      "Onboard computer + radio + batteri i den grå FieldPrinter 2-kasse",
       "Joystick: dead-man, start/stop, retract head, reprint, skip, flip (FCC-manual)",
       "Min. 3 kontrolpunkter pr. station, ikke kollineære",
       "Printer inden for 1,25″ langs væg og 0,825″ foran forhindring"
@@ -1167,9 +1165,9 @@ var PRINTER_ANATOMY = [
     label: "Tracker og sensorer",
     category: "Sansning",
     description:
-      "Nøjagtigheden sidder ikke i bæltet. En Leica-lasertracker (typisk AT403-klasse) " +
-      "står på dækket og sigter på en stålreflektor-kugle på robotten med <0,005″ på " +
-      "100 ft. Positionen går ind i motion controlleren ≥100 Hz. IMU og hjulencodere " +
+      "Nøjagtigheden sidder ikke i hjulene. En Leica-lasertracker står på dækket og " +
+      "sigter på reflektorkuglen oven på FieldPrinter 2, med <0,005″ på 100 ft. " +
+      "Positionen går ind i motion controlleren ≥100 Hz. IMU og hjulencodere " +
       "fylder hullerne mellem tracker-samples og fanger hjulslør. Kameraer og computer " +
       "vision ser forhindringer og kanter. To antenner/master sidder bagude. Uden " +
       "gode kontrolpunkter printer robotten skævt — Dusty er eksplicit: control points " +
@@ -1180,25 +1178,6 @@ var PRINTER_ANATOMY = [
       "IMU + encodere som grov tilstand mellem tracker-samples",
       "Computer vision til forhindringer, kanter og on-slab korrektion",
       "Kontrolpunkter binder projektkoordinater til det fysiske dæk"
-    ]
-  },
-  {
-    id: "printarm",
-    label: "Printarm",
-    category: "Aktuering",
-    description:
-      "Printarmen er den korte gantry, der bærer printhovedet bagud og kan trække det " +
-      "ind (retract) over forhindringer og under transport. Den afkobler robotkassens " +
-      "kørsel fra blækkets kontakt med slaben: bæltet kører groft, armen holder hovedet " +
-      "i arbejdshøjde. FCC-manualen har 'Retract print head' som dedikeret funktion. " +
-      "Linear rails giver det tværtrin, servoen bruger til finjustering. Uden armen " +
-      "ville dysen sidde fast i kassen og ramme hvert stykke armering; med den kan " +
-      "FieldPrinter køre tæt på vægge og stadig lægge en streg 1/16″ rigtigt.",
-    specs: [
-      "Gantry/udligger der bærer printhovedet; retract til transport og forhindringer",
-      "Linear rails til tværtrin vinkelret på kørsel",
-      "Afkobler bæltets grove kørsel fra blækkets kontaktpunkt",
-      "FCC: dedikeret retract-kommando på joysticket"
     ]
   },
   {
@@ -1217,7 +1196,7 @@ var PRINTER_ANATOMY = [
       "sparet layout-timer på ét hospital; Dusty selv over 300 mio. kvadratfod.",
     specs: [
       "Dyse + patron + wind guards; 600 DPI, ±1/16″ (1,6 mm) vs. total station",
-      "Servo-tværtrin typisk ±25 mm — finleddet der afkobler print fra bælte-odometri",
+      "Servo-tværtrin typisk ±25 mm — finleddet der afkobler print fra hjul-odometri",
       "Vandbaseret (kridt-agtigt) eller solvent (våd/tæt beton); farve = patron",
       "Printer linjer, tekst, symboler, QR; Dusty: 300M+ ft² på 1.000+ bygninger"
     ]
@@ -1230,7 +1209,9 @@ var PRINTER_ANATOMY_SOURCES = [
   { label: "Dusty Robotics — drywall/layout-robot (nøjagtighed, dækning)", url: "https://www.dustyrobotics.com/discover/drywall-robot" },
   { label: "FCC-manual FieldPrinter (komponenter, joystick, patron)", url: "https://fccid.io/2BE9F-FLDPRNTR100/User-Manual/User-Manual-Part-1-7423443.pdf" },
   { label: "FieldPrinter position: Leica-tracker + printhoved-servo", url: "https://industrialmonitordirect.com/blogs/knowledgebase/dusty-robotics-fieldprinter-layout-accuracy-and-technical-specs" },
-  { label: "Dusty — FieldPrinter How it Works (video)", url: "https://www.youtube.com/watch?v=cT_hoqj8f40" }
+  { label: "Dusty — FieldPrinter How it Works (video)", url: "https://www.youtube.com/watch?v=cT_hoqj8f40" },
+  { label: "Dusty — foto af FieldPrinter (forhindringer og linjestile)", url: "https://cdn.prod.website-files.com/64d2bbdae796ca9291a4c909/6723f1c3efa5e2155ce3b8d8_dusty-robotics-fieldprinter-obstacles-line-styles.webp" },
+  { label: "PMD — FieldPrinter 2 drives på to forhjul", url: "https://www.therobotreport.com/dusty-robotics-designs-fieldprinter-2-robot-with-pmd-motion-controllers/" }
 ];
 
 // Kategorier brugt til hotspot-etiketter i illustrationen — se PART_LAYOUT i illustration.js.

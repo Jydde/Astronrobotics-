@@ -227,7 +227,7 @@
     var links = {
       "boston-dynamics-spot": ["spot", "Se Spot-anatomien — krop, hofter og ben →"],
       brokk: ["brokk", "Se Brokk-anatomien — bælter, arm og hammer →"],
-      "dusty-fieldprinter": ["printer", "Se FieldPrinter-anatomien — bælter, tracker og printhoved →"]
+      "dusty-fieldprinter": ["printer", "Se FieldPrinter-anatomien — hjul, reflektor og printhoved →"]
     };
     var spec = links[r.id];
     if (!spec && r.category === "jobsite") return "";
@@ -375,23 +375,22 @@
           b64: "PRINTER_PARTS_B64",
           intro: window.PRINTER_ANATOMY_INTRO,
           colors: {
-            tracks: 0x2a2a2a,
-            body: 0xe4e6ea,
-            sensor: 0x4a5056,
-            printarm: 0x3a3e42,
-            printhead: 0x2c3034
+            wheels: 0x1c1c1e,
+            body: 0xb7bcc2,
+            sensor: 0xd8dde2,
+            printhead: 0x9aa0a6
           },
           unitParent: {
             "C:body": "",
-            "L:tracks": "C:body",
-            "R:tracks": "C:body",
+            "L:wheels": "C:body",
+            "R:wheels": "C:body",
+            "C:wheels": "C:body",
             "C:sensor": "C:body",
-            "C:printarm": "C:body",
-            "C:printhead": "C:printarm"
+            "C:printhead": "C:body"
           },
           unitOrder: [
-            "C:body", "L:tracks", "R:tracks",
-            "C:sensor", "C:printarm", "C:printhead"
+            "C:body", "L:wheels", "R:wheels", "C:wheels",
+            "C:sensor", "C:printhead"
           ]
         }
       };

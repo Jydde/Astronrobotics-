@@ -8,7 +8,10 @@ udgangspunkt, samme idé som humanoid-delen tager udgangspunkt i en
 rigtig robot — ikke officiel CAD og ikke et scan. Familien 70–900
 deler anatomien, ikke skalaen. Pressfotoet ligger ikke i repoet.
 
-FieldPrinter: bælteplatform, kasse, tracker-reflektor og printhoved efter
-Dustys egne fotos, FCC-manualens komponentliste og support-artikler.
+FieldPrinter: formen følger Dustys publicerede foto af FieldPrinter 2
+(grå kasse, to drivhjul, passivt baghjul, reflektorkugle, printdæksel).
+Fotoet er udgangspunktet. Automatisk billede-til-3D kunne ikke køres på
+denne konto (zero data retention), så meshen er målt op efter fotoet.
+Ikke officiel CAD. Pressfotoet ligger ikke i repoet.
 
 Tal i panelet kommer fra kildelisten under hver anatomi, ikke fra mesh'et.

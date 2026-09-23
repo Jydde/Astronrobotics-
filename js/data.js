@@ -273,7 +273,7 @@ var ROBOTS = [
     category: "jobsite",
     status: "I brug",
     tagline: "Fjernstyret nedrivning i rum, hvor en gravemaskine ikke kan være",
-    image: "assets/robots/brokk.jpg",
+    image: "assets/robots/brokk.jpg?v=brokk200",
     youtube: "izJ1G0JqZUo",
     specs: {
       type: "Fjernstyret bælterobot med treleddet arm og udskifteligt værktøj",

@@ -9,7 +9,7 @@ Samme tabel-konvention som [Website Frontend/assets/robots/SOURCES.md](../../Web
 | boston-dynamics-atlas.jpg | [bostondynamics.com/atlas](https://bostondynamics.com/atlas/) | Officielt produktfoto (Boston Dynamics) |
 | figure-03.webp | [humanoid.guide/product/figure-03](https://humanoid.guide/product/figure-03/) | Tredjeparts render, ikke fra Figure AI selv |
 | unitree-g1.jpg | [unitree.com/g1](https://www.unitree.com/g1) | Officiel produkt-render, gående sideprofil (Unitree) |
-| brokk.jpg | Genereret katalogfoto (Imagine) | Illustration af orange bælte-nedrivningsrobot på plads — ikke et officielt Brokk-foto |
+| brokk.jpg | Genereret katalogfoto (Imagine), efter Brokks Brokk 200+ produktfoto | Illustration af den gule Brokk 200+ med stabilisatorer ude og BHB 305 — samme maskine som anatomi-modellen, ikke et officielt Brokk-foto |
 | dusty-fieldprinter.jpg | Genereret katalogfoto (Imagine) | Illustration af hvid layout-robot der printer på dæk — ikke et officielt Dusty-foto |
 | hilti-jaibot.jpg | Genereret katalogfoto (Imagine) | Illustration af rød loftborerobot — ikke et officielt Hilti-foto |
 | acr-tybot.jpg | Genereret katalogfoto (Imagine) | Illustration af gul armerings-gantry over brodæk — ikke et officielt ACR-foto |

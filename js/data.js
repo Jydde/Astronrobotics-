@@ -913,8 +913,8 @@ var SPOT_ANATOMY_SOURCES = [
 
 /*
  * BROKK_ANATOMY — treleddet nedrivningsrobot.
- * 3D er en skematisk rekonstruktion ud fra Brokks egne produktmål og
- * offentlige fotos (ikke officiel CAD). Tal er Brokk 200-klassen som
+ * 3D følger Brokks publicerede produktfoto af Brokk 200+ (stabilisatorer
+ * ude, BHB 305). Ikke officiel CAD. Tal er Brokk 200-klassen som
  * mid-size eksempel, med mindre/større modeller nævnt hvor det betyder
  * noget. Værktøjet i mesh'et er en hydraulisk hammer.
  */
@@ -928,15 +928,15 @@ var BROKK_ANATOMY_INTRO = {
     "SmartRemote, op til ca. 300 m radio eller med kabel. Kroppen rummer ABB-elmotor, " +
     "hydraulikpumpe og køling; bæltet bærer maskinen ind gennem døre og elevatorer; " +
     "armen er tre stive led med fire cylindre, så hammeren kan slå op i et loft, " +
-    "ind i en væg og ned i et dæk. 3D-modellen er en skematisk Brokk 200-klasse " +
-    "(ca. 2,1 t, 27,5 kW) i arbejdende positur. Familien går fra Brokk 70+ på 560 kg " +
-    "til Brokk 800/900 over 11 t — samme anatomi, anden skala.",
+    "ind i en væg og ned i et dæk. 3D-modellen følger Brokks produktfoto af Brokk 200+ " +
+    "(ca. 2,1 t, 27,5 kW) med stabilisatorerne ude og BHB 305 hængende. Familien går " +
+    "fra Brokk 70+ på 560 kg til Brokk 800/900 over 11 t — samme anatomi, anden skala.",
   specs: [
     "Treleddet arm + slewing: typisk 245° på de mindste, 360° på Brokk 200 og op",
     "Brokk 200-eksempel: 2100 kg, 780 mm min. bredde, 1351 mm min. højde, 5,45 m lodret rækkevidde",
     "SmartPower™ el: 9,8 kW (70) til 27,5 kW (200) og 37 kW (300); ABB-motor, 16–63 A",
     "Værktøjsskift: hammer, knuser, saks, grab, bor, tromle, planer — her vist med BHB-hammer",
-    "3D: skematisk rekonstruktion. Tal: Brokk produktspec, ikke fra mesh'et"
+    "3D: rekonstruktion af Brokk 200+ produktfotoet. Tal: Brokk produktspec, ikke fra mesh'et"
   ]
 };
 
@@ -958,6 +958,25 @@ var BROKK_ANATOMY = [
       "Transport 2,1 km/t (Brokk 200) / 2,7 km/t (Brokk 70); max stigning 30°",
       "Min. bredde 597 mm (70) – 780 mm (110/200) – 1200 mm (300)",
       "Brokk 70 vejer 560 kg og kan i person-elevator; Brokk 200 vejer 2100 kg"
+    ]
+  },
+  {
+    id: "outrigger",
+    label: "Stabilisatorer",
+    category: "Støtte",
+    description:
+      "På Brokks produktfoto af Brokk 200+ står maskinen på fire stabilisatorer, " +
+      "slået ud til siderne, mens gummibælterne bliver under chassiset. Brokk " +
+      "beskriver en counterweight-option monteret på outriggers til de tungeste " +
+      "værktøjer. Benene er ikke med i min-bredden: de 780 mm på Brokk 200 måles " +
+      "på bælterne, så maskinen stadig kan gennem en dør, når benene er slået ind. " +
+      "I den viste positur er det benene, der holder den kompakte krop i ro, mens " +
+      "hammeren hænger ude til siden.",
+    specs: [
+      "Fire ben, slået ud — posituren fra Brokk 200+ produktfotoet",
+      "Bælterne bliver under chassiset og bærer maskinen, når benene er inde",
+      "Counterweight på outriggers er en option til ekstra tungt værktøj",
+      "Min. bredde 780 mm er bælterne, ikke benene slået ud"
     ]
   },
   {
@@ -1072,6 +1091,7 @@ var BROKK_ANATOMY_SOURCES = [
   { label: "Brokk 300 — mid-heavy", url: "https://www.brokk.com/us/product/brokk-300/" },
   { label: "Brokk — sammenligning af modeller", url: "https://www.brokk.com/us/compare-models/" },
   { label: "Brokk BHB-hammere (205/305/455/555)", url: "https://www.brokk.com/uploads/2023/06/brokk_breakers_bhb205_bhb305_bhb455_bhb555.pdf" },
+  { label: "Brokk — produktfoto Brokk 200+ (pressearkiv, redaktionel brug)", url: "https://www.brokk.com/uploads/2024/01/brokk_b200_sp-scaled.jpg" },
   { label: "ACP — AMG nedriver etagebyggeri med Brokk 300 og 110", url: "https://acppubs.com/BE/article/C1C7A7CE-demolition-doctors" }
 ];
 

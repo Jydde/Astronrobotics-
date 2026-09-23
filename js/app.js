@@ -336,23 +336,26 @@
           intro: window.BROKK_ANATOMY_INTRO,
           colors: {
             tracks: 0x2a2c2e,
-            body: 0xe45a14,
-            boom: 0xef6c1c,
-            stick: 0xdc5510,
-            forearm: 0xcc4c0e,
-            tool: 0x4a4e52
+            body: 0xe6b010,
+            outrigger: 0xd69a0a,
+            boom: 0xf2c220,
+            stick: 0x1c1c1e,
+            forearm: 0x3a3a3e,
+            tool: 0xf5c414
           },
           unitParent: {
             "C:body": "",
             "L:tracks": "C:body",
             "R:tracks": "C:body",
+            "L:outrigger": "C:body",
+            "R:outrigger": "C:body",
             "C:boom": "C:body",
             "C:stick": "C:boom",
             "C:forearm": "C:stick",
             "C:tool": "C:forearm"
           },
           unitOrder: [
-            "C:body", "L:tracks", "R:tracks",
+            "C:body", "L:tracks", "R:tracks", "L:outrigger", "R:outrigger",
             "C:boom", "C:stick", "C:forearm", "C:tool"
           ]
         }

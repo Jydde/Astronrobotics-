@@ -331,7 +331,7 @@
         opts: {
           kind: "biped",
           jointGap: 0.34,
-          bin: "assets/brokk-parts.bin",
+          bin: "assets/brokk-parts.bin?v=brokk200",
           b64: "BROKK_PARTS_B64",
           intro: window.BROKK_ANATOMY_INTRO,
           colors: {

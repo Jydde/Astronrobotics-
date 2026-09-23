@@ -1,224 +1,112 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projekter | Astron Robotics</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/site.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projekter | Astron Robotics</title>
+  <meta name="robots" content="noindex">
+  <meta name="description" content="Intern Kanban-tavle for Astron Robotics.">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
 </head>
-<body>
+<body class="is-board">
+  <div class="bg-image"></div>
+  <div class="overlay"></div>
 
-    <div class="bg-image"></div>
-    <div class="overlay"></div>
+  <header class="site-bar">
+    <a class="logo" href="index.html">Astron Robotics</a>
+    <nav class="site-links" aria-label="Hovedmenu">
+      <a href="index.html">Home</a>
+      <a href="robotter.html">Robotter</a>
+      <a class="is-active" href="projekter.html" aria-current="page">Projekter</a>
+    </nav>
+  </header>
 
-    <header class="site-bar">
-        <a class="logo" href="index.html">Astron Robotics</a>
-        <nav class="site-links" aria-label="Hovedmenu">
-            <a href="index.html">Home</a>
-            <a href="robotter.html">Robotter</a>
-            <a class="is-active" href="projekter.html" aria-current="page">Projekter</a>
-        </nav>
-    </header>
+  <main class="board-page">
+    <section class="board-hero">
+      <p class="eyebrow">Teamtavle</p>
+      <h1>Projekter i gang</h1>
+      <p>Fælles Kanban. Træk kort mellem kolonner, sæt en ansvarlig, og hold WIP nede — så I færdiggør, før I starter nyt.</p>
+    </section>
 
-    <main class="board-page">
-        <div class="board-hero">
-            <p class="eyebrow">Intern udvikling</p>
-            <h1>Projekter &amp; Roadmap</h1>
-            <p class="lead">Vores Kanban-tavle viser aktuelle initiativer inden for robotudvikling, test, dokumentation og skalering. Træk kortene mellem kolonner (localStorage gemmer dine ændringer i browseren).</p>
+    <section class="board-toolbar">
+      <label>
+        Projekt
+        <select id="filterProject"><option value="alle">Alle</option></select>
+      </label>
+      <label>
+        Ansvarlig
+        <select id="filterOwner"><option value="alle">Alle</option></select>
+      </label>
+      <span class="wip-hint" id="wipHint"></span>
+      <div class="board-actions">
+        <button class="btn btn-primary" id="addCardBtn" type="button">Nyt kort</button>
+        <button class="btn" id="exportBtn" type="button">Eksporter</button>
+        <label class="btn btn-import">
+          Importer
+          <input id="importInput" type="file" accept="application/json,.json" hidden>
+        </label>
+        <button class="btn" id="resetBtn" type="button">Gendan fælles tavle</button>
+      </div>
+    </section>
+
+    <p class="persist-note">
+      Ændringer gemmes i denne browser. Eksporter JSON og del den med teamet — eller opdatér <code>js/kanban-data.js</code> og læg filen op sammen med resten af sitet.
+    </p>
+
+    <section class="kanban-board" id="board" aria-label="Kanban-tavle"></section>
+  </main>
+
+  <div class="modal" id="cardModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="cardModalTitle">
+      <button class="modal-close" data-close aria-label="Luk">&times;</button>
+      <form id="cardForm" class="card-form">
+        <h2 id="cardModalTitle">Nyt kort</h2>
+        <label>
+          Titel
+          <input id="fieldTitle" name="title" type="text" required maxlength="120" autocomplete="off">
+        </label>
+        <label>
+          Beskrivelse
+          <textarea id="fieldNotes" name="notes" rows="4" maxlength="800"></textarea>
+        </label>
+        <div class="card-form-row">
+          <label>
+            Kolonne
+            <select id="fieldColumn" name="column"></select>
+          </label>
+          <label>
+            Projekt
+            <select id="fieldProject" name="project"></select>
+          </label>
         </div>
-
-        <div class="kanban-board" id="kanban-board">
-            <!-- Populated by JS -->
+        <div class="card-form-row">
+          <label>
+            Ansvarlig
+            <input id="fieldOwner" name="owner" type="text" maxlength="40" list="ownerList" autocomplete="off">
+            <datalist id="ownerList"></datalist>
+          </label>
+          <label>
+            Prioritet
+            <select id="fieldPriority" name="priority">
+              <option value="low">Lav</option>
+              <option value="medium">Mellem</option>
+              <option value="high">Høj</option>
+            </select>
+          </label>
         </div>
-    </main>
+        <input type="hidden" id="fieldId" name="id">
+        <div class="card-form-actions">
+          <button class="btn btn-primary" type="submit">Gem</button>
+          <button class="btn" type="button" data-close>Annuller</button>
+          <button class="btn btn-danger card-form-delete" type="button" id="deleteCardBtn" hidden>Slet kort</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
-    <footer class="site-footer">
-        Ændringer gemmes lokalt i din browser via localStorage. Nulstil ved at slette browserdata eller opdatere data i JS.
-    </footer>
-
-    <script>
-        // Self-contained simple Kanban with localStorage
-        const COLUMNS = [
-            { id: 'backlog', title: 'Backlog', color: '#334155' },
-            { id: 'igang', title: 'I Gang', color: '#0ea5e9' },
-            { id: 'test', title: 'Test &amp; Validering', color: '#eab308' },
-            { id: 'done', title: 'Færdigt', color: '#22c55e' }
-        ];
-
-        let tasks = [
-            {
-                id: 1,
-                title: "Atlas-X balance kontrol",
-                desc: "Implementer avanceret gyro og fod-sensor feedback til stabil gang på ujævnt underlag.",
-                column: "igang",
-                maturity: "High"
-            },
-            {
-                id: 2,
-                title: "Orion Walker prototype v0.3",
-                desc: "Byg og test første fysiske prototype med 6 DoF ben og torso.",
-                column: "backlog",
-                maturity: "Medium"
-            },
-            {
-                id: 3,
-                title: "Forge Arm integration test",
-                desc: "Test præcision ved svejsning og montage med eksterne værktøjer.",
-                column: "test",
-                maturity: "High"
-            },
-            {
-                id: 4,
-                title: "AI vision til Scout MK2",
-                desc: "Træn model til at genkende byggeelementer og farer på pladsen.",
-                column: "done",
-                maturity: "Low"
-            },
-            {
-                id: 5,
-                title: "Horizon modularity spec",
-                desc: "Design modulært interface til hurtig skift af end-effectors.",
-                column: "igang",
-                maturity: "Medium"
-            },
-            {
-                id: 6,
-                title: "Neo Hauler batteri & autonomi",
-                desc: "Optimer energiforbrug og path planning for 8-timers drift.",
-                column: "backlog",
-                maturity: "High"
-            }
-        ];
-
-        function saveToLocalStorage() {
-            localStorage.setItem('astron_kanban_tasks', JSON.stringify(tasks));
-        }
-
-        function loadFromLocalStorage() {
-            const saved = localStorage.getItem('astron_kanban_tasks');
-            if (saved) {
-                tasks = JSON.parse(saved);
-            }
-        }
-
-        function renderKanban() {
-            const board = document.getElementById('kanban-board');
-            board.innerHTML = '';
-
-            COLUMNS.forEach(col => {
-                const colTasks = tasks.filter(t => t.column === col.id);
-                
-                const colEl = document.createElement('div');
-                colEl.className = 'kanban-col';
-                colEl.innerHTML = `
-                    <div class="kanban-col-header" style="border-bottom: 3px solid ${col.color};">
-                        <h2>${col.title}</h2>
-                        <div class="col-count">${colTasks.length}</div>
-                    </div>
-                    <div class="kanban-col-body" data-column="${col.id}"></div>
-                `;
-
-                const body = colEl.querySelector('.kanban-col-body');
-                
-                colTasks.forEach(task => {
-                    const card = document.createElement('div');
-                    card.className = 'kanban-card';
-                    card.draggable = true;
-                    card.dataset.id = task.id;
-                    card.innerHTML = `
-                        <h4>${task.title}</h4>
-                        <p>${task.desc}</p>
-                        <div class="card-meta">
-                            <span style="background: ${task.maturity === 'High' ? '#ef4444' : task.maturity === 'Medium' ? '#f59e0b' : '#64748b'}; color: white; padding: 1px 8px; border-radius: 9999px; font-size: 0.7rem;">${task.maturity}</span>
-                            <span>Task #${task.id}</span>
-                        </div>
-                    `;
-                    
-                    // Drag events
-                    card.addEventListener('dragstart', (e) => {
-                        e.dataTransfer.setData('text/plain', task.id);
-                        card.style.opacity = '0.6';
-                    });
-                    
-                    card.addEventListener('dragend', () => {
-                        card.style.opacity = '1';
-                    });
-                    
-                    body.appendChild(card);
-                });
-
-                // Drop zone
-                body.addEventListener('dragover', (e) => {
-                    e.preventDefault();
-                    body.style.background = 'rgba(0, 195, 255, 0.1)';
-                });
-                
-                body.addEventListener('dragleave', () => {
-                    body.style.background = '';
-                });
-                
-                body.addEventListener('drop', (e) => {
-                    e.preventDefault();
-                    body.style.background = '';
-                    const id = parseInt(e.dataTransfer.getData('text/plain'));
-                    const task = tasks.find(t => t.id === id);
-                    if (task) {
-                        task.column = col.id;
-                        saveToLocalStorage();
-                        renderKanban();
-                    }
-                });
-
-                board.appendChild(colEl);
-            });
-        }
-
-        // Add new task button simulation (for demo)
-        function addSampleTask() {
-            const newTask = {
-                id: Date.now(),
-                title: "Ny udviklingsopgave",
-                desc: "Beskrivelse af ny feature eller test. Træk til anden kolonne for at opdatere status.",
-                column: "backlog",
-                maturity: "Medium"
-            };
-            tasks.push(newTask);
-            saveToLocalStorage();
-            renderKanban();
-        }
-
-        // Keyboard shortcut hint
-        function showHelp() {
-            if (confirm('Tryk "N" for at tilføje en ny demo-opgave.\n\nDette er en letvægts, selvstændig Kanban-implementation med localStorage-persistence.')) {
-                addSampleTask();
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            loadFromLocalStorage();
-            renderKanban();
-
-            // Keyboard support
-            document.addEventListener('keydown', (e) => {
-                if (e.key.toLowerCase() === 'n') {
-                    addSampleTask();
-                }
-                if (e.key === '?' || e.key === '/') {
-                    showHelp();
-                }
-            });
-
-            // Make header nav consistent
-            const navLinks = document.querySelectorAll('.site-links a');
-            const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-            navLinks.forEach(link => {
-                const href = link.getAttribute('href');
-                if (href === currentPath || (currentPath === '' && href === 'index.html')) {
-                    link.classList.add('is-active');
-                }
-            });
-        });
-    </script>
+  <script src="js/kanban-data.js"></script>
+  <script src="js/kanban.js"></script>
 </body>
 </html>

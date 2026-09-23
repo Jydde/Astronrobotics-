@@ -1,87 +1,242 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Robotter | Astron Robotics</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/site.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Robotter | Astron Robotics</title>
+  <meta name="description" content="Et uafhængigt overblik over humanoide robotter og almindelige byggepladsrobotter, der allerede er i brug — med dokumenterede use cases.">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
 </head>
-<body>
+<body class="is-board is-catalog">
+  <div class="bg-image"></div>
+  <div class="overlay"></div>
 
-    <div class="bg-image"></div>
-    <div class="overlay"></div>
+  <header class="site-bar">
+    <a class="logo" href="index.html">Astron Robotics</a>
+    <nav class="site-links" aria-label="Hovedmenu">
+      <a href="index.html">Home</a>
+      <a class="is-active" href="robotter.html" aria-current="page">Robotter</a>
+      <a href="projekter.html">Projekter</a>
+    </nav>
+  </header>
 
-    <header class="site-bar">
-        <a class="logo" href="index.html">Astron Robotics</a>
-        <nav class="site-links" aria-label="Hovedmenu">
-            <a href="index.html">Home</a>
-            <a class="is-active" href="robotter.html" aria-current="page">Robotter</a>
-            <a href="projekter.html">Projekter</a>
-        </nav>
-    </header>
+  <main class="catalog-page">
+    <section class="catalog-hero wrap">
+      <div class="catalog-hero-copy">
+        <p class="eyebrow">Humanoide og byggepladsrobotter</p>
+        <h1>Robotter i byggebranchen, del for del.</h1>
+        <p class="catalog-lead">
+          To oversigter: humanoide robotter (fra prototype til første drift) og
+          almindelige byggepladsrobotter, der allerede er i brug — murværk, layout,
+          boring, nedrivning, armering og inspektion. Anatomi-fanen dækker den humanoide kropsform.
+        </p>
+      </div>
+      <div class="catalog-figure">
+        <span class="catalog-figure-number" id="countRobots">11</span>
+        <span class="catalog-figure-label">robotter i oversigten</span>
+        <span class="catalog-figure-rule" aria-hidden="true"></span>
+        <span class="catalog-figure-sub">uafhængigt · kildebelagt · ærligt om modenhed</span>
+      </div>
+    </section>
 
-    <main class="catalog-page board-page">
-        <div class="board-hero">
-            <p class="eyebrow">Vores flåde</p>
-            <h1>Humanoid robotter under udvikling</h1>
-            <p class="lead">Vi designer, bygger og tester næste generations robotter til konstruktion, vedligehold og farlige opgaver på byggepladser. Hver robot har specifikke styrker og modenhedsniveauer. Tryk ind for at se en reference-demo.</p>
+    <div class="wrap page-tabs">
+      <button type="button" class="page-tab is-active" data-tab="robots">Robotter</button>
+      <button type="button" class="page-tab" data-tab="anatomy">Anatomi</button>
+    </div>
+
+    <section class="catalog wrap" id="robotsView">
+      <nav class="catalog-jump" aria-label="Katalogsektioner">
+        <a href="#humanoidSection">Humanoide</a>
+        <a href="#jobsiteSection">Byggepladsrobotter</a>
+      </nav>
+
+      <div class="catalog-section" id="humanoidSection">
+        <p class="eyebrow">Humanoide</p>
+        <h2 class="catalog-section-title">Humanoide robotter</h2>
+        <p class="catalog-lead">
+          To-benede maskiner med arme og ben. De fleste er stadig prototype eller
+          fabriks-pilot. Kun få er dokumenteret på en levende byggeplads.
+        </p>
+        <div class="grid" id="humanoidGrid"></div>
+      </div>
+
+      <div class="catalog-section" id="jobsiteSection">
+        <p class="eyebrow">Allerede i brug</p>
+        <h2 class="catalog-section-title">Almindelige robotter i byggebranchen</h2>
+        <p class="catalog-lead">
+          Ikke humanoide. Specialiserede maskiner til én opgave — med navngivne
+          entreprenører, projekter og tal. Det er her robotter reelt arbejder på pladsen i dag.
+        </p>
+        <div class="grid" id="jobsiteGrid"></div>
+      </div>
+    </section>
+
+    <section class="anatomy-view wrap" id="anatomyView" hidden>
+      <div class="anatomy-switch" role="tablist" aria-label="Anatomi-modeller">
+        <button type="button" class="page-tab is-active" data-anatomy="humanoid">Humanoid</button>
+        <button type="button" class="page-tab" data-anatomy="spot">Spot</button>
+        <button type="button" class="page-tab" data-anatomy="brokk">Brokk</button>
+        <button type="button" class="page-tab" data-anatomy="printer">FieldPrinter</button>
+      </div>
+
+      <div id="anatomyHumanoid">
+        <p class="eyebrow">Generel anatomi · ikke robot-specifik</p>
+        <h2 class="anatomy-title">Sådan er en humanoid robot bygget op</h2>
+        <p class="catalog-lead anatomy-lead">
+          Træk for at dreje. Scroll zoomer. Klik et led for at læse det.
+          Træk <em>Skil ad</em> for at skille de beskrevne dele ad:
+          hoved, torso, skulder, arm, hånd, hofte, lår, knæ og fod.
+        </p>
+        <p class="anatomy-note">
+          3D-modellen er Unitree G1 visual meshes (led for led). Den tekniske gennemgang
+          bygger især på Berkeley Humanoid (Liao et al., 2024) som forskningsplatform-eksempel.
+        </p>
+
+        <div class="anatomy-stage">
+          <div class="anatomy-figure" id="bpCanvasWrap"></div>
+          <aside class="anatomy-panel">
+            <p class="bp-sub" id="bpPanelSub">Oversigt</p>
+            <h3 class="bp-panel-title" id="bpPanelTitle">Humanoid anatomi</h3>
+            <label class="bp-explode">
+              Skil ad
+              <input id="bpExplode" type="range" min="0" max="100" value="0" step="1">
+            </label>
+            <p class="bp-panel-text" id="bpPanelText">
+              Træk slideren for at skille de beskrevne komponenter ad — foden forbliver én fod,
+              løsnet fra knæet, knæet fra låret, og så videre. Klik en del på robotten.
+            </p>
+            <ul class="bp-specs" id="bpPanelSpecs"></ul>
+          </aside>
         </div>
 
-        <div class="robot-grid">
-            <a class="robot-card" href="robot-atlas-x.html">
-                <img src="img/atlas.jpg" alt="Atlas-X humanoid robot" loading="lazy">
-                <div class="card-body">
-                    <h3>Atlas-X</h3>
-                    <p class="blurb">Vores flagskib humanoid. Avanceret balance, præcision og styrke til tunge løft og montage på byggepladser.</p>
-                    <span class="maturity-tag">Prototype</span>
-                </div>
-            </a>
-            <a class="robot-card" href="robot-orion-walker.html">
-                <img src="img/orion.jpg" alt="Orion Walker biped robot" loading="lazy">
-                <div class="card-body">
-                    <h3>Orion Walker</h3>
-                    <p class="blurb">Bipede gå-robot til terrængående opgaver. Udviklet til inspektion, overvågning og lette byggeopgaver i ujævnt terræn.</p>
-                    <span class="maturity-tag">Koncept</span>
-                </div>
-            </a>
-            <a class="robot-card" href="robot-forge-arm.html">
-                <img src="img/forge.jpg" alt="Forge Arm welding manipulator" loading="lazy">
-                <div class="card-body">
-                    <h3>Forge Arm</h3>
-                    <p class="blurb">Specialiseret arm-manipulator til præcis svejsning, boring og materialehåndtering. Integreres med eksisterende byggeudstyr.</p>
-                    <span class="maturity-tag">Pilot</span>
-                </div>
-            </a>
-            <a class="robot-card" href="robot-neo-hauler.html">
-                <img src="img/hauler.jpg" alt="Neo Hauler logistics robot" loading="lazy">
-                <div class="card-body">
-                    <h3>Neo Hauler</h3>
-                    <p class="blurb">Stærk transport- og logistikrobot. Kan bære op til 250 kg materialer autonomt over byggepladser.</p>
-                    <span class="maturity-tag">In Development</span>
-                </div>
-            </a>
-            <a class="robot-card" href="robot-scout-mk2.html">
-                <img src="img/scout.jpg" alt="Scout MK2 inspection robot" loading="lazy">
-                <div class="card-body">
-                    <h3>Scout MK2</h3>
-                    <p class="blurb">Letvægts inspektionsrobot med kameraer, sensorer og AI til sikkerhedschecks og 3D-mapping af byggepladser.</p>
-                    <span class="maturity-tag">Beta</span>
-                </div>
-            </a>
-            <a class="robot-card" href="robot-horizon-series.html">
-                <img src="img/horizon.jpg" alt="Horizon Series humanoid robots" loading="lazy">
-                <div class="card-body">
-                    <h3>Horizon Series</h3>
-                    <p class="blurb">Fremtidig familie af alsidige humanoide robotter. Modulær design til hurtig tilpasning til nye byggeopgaver.</p>
-                    <span class="maturity-tag">Research</span>
-                </div>
-            </a>
-        </div>
-    </main>
+        <p class="m-section-title">Kilder</p>
+        <ul class="m-sources" id="anatomySources"></ul>
+      </div>
 
-    <footer class="site-footer">
-        Astron Robotics — originale designs • uafhængig udvikling • fokus på sikkerhed og praktisk anvendelse i byggeriet
-    </footer>
+      <div id="anatomySpot" hidden>
+        <p class="eyebrow">Firbenet anatomi · Spot</p>
+        <h2 class="anatomy-title">Sådan er Spot bygget op</h2>
+        <p class="catalog-lead anatomy-lead">
+          Træk for at dreje. Scroll zoomer. Klik et led for at læse det.
+          Træk <em>Skil ad</em> for at skille de beskrevne dele ad:
+          sensorhus, krop, hofte, lår og underben — ét stykke pr. led, fire ben.
+        </p>
+        <p class="anatomy-note">
+          3D-modellen er Boston Dynamics Spot visual meshes (led for led) via MuJoCo Menagerie.
+          Specifikationerne kommer fra Spot SDK og Boston Dynamics' egne anatomi- og spec-artikler.
+        </p>
+
+        <div class="anatomy-stage">
+          <div class="anatomy-figure" id="spotCanvasWrap"></div>
+          <aside class="anatomy-panel">
+            <p class="bp-sub" id="spotPanelSub">Oversigt</p>
+            <h3 class="bp-panel-title" id="spotPanelTitle">Spot anatomi</h3>
+            <label class="bp-explode">
+              Skil ad
+              <input id="spotExplode" type="range" min="0" max="100" value="0" step="1">
+            </label>
+            <p class="bp-panel-text" id="spotPanelText">
+              Træk slideren for at skille de beskrevne komponenter ad — underbenet forbliver
+              ét underben med fod, løsnet fra låret, låret fra hoften, hoften fra kroppen.
+              Klik en del på robotten.
+            </p>
+            <ul class="bp-specs" id="spotPanelSpecs"></ul>
+          </aside>
+        </div>
+
+        <p class="m-section-title">Kilder</p>
+        <ul class="m-sources" id="spotSources"></ul>
+      </div>
+
+      <div id="anatomyBrokk" hidden>
+        <p class="eyebrow">Nedrivning · Brokk</p>
+        <h2 class="anatomy-title">Sådan er en Brokk bygget op</h2>
+        <p class="catalog-lead anatomy-lead">
+          Træk for at dreje. Scroll zoomer. Klik et led for at læse det.
+          Træk <em>Skil ad</em> for at skille de beskrevne dele ad:
+          bælter, chassis, bom, stick, underarm og værktøj.
+        </p>
+        <p class="anatomy-note">
+          3D-modellen er en skematisk Brokk 200-klasse (ikke officiel CAD).
+          Specifikationerne kommer fra Brokks egne produktsider; familien går fra 560 kg til over 11 t.
+        </p>
+
+        <div class="anatomy-stage">
+          <div class="anatomy-figure" id="brokkCanvasWrap"></div>
+          <aside class="anatomy-panel">
+            <p class="bp-sub" id="brokkPanelSub">Oversigt</p>
+            <h3 class="bp-panel-title" id="brokkPanelTitle">Brokk anatomi</h3>
+            <label class="bp-explode">
+              Skil ad
+              <input id="brokkExplode" type="range" min="0" max="100" value="0" step="1">
+            </label>
+            <p class="bp-panel-text" id="brokkPanelText">
+              Træk slideren for at skille de beskrevne komponenter ad — hammeren forbliver
+              ét værktøj, løsnet fra underarmen, underarmen fra sticket, og så videre.
+              Klik en del på maskinen.
+            </p>
+            <ul class="bp-specs" id="brokkPanelSpecs"></ul>
+          </aside>
+        </div>
+
+        <p class="m-section-title">Kilder</p>
+        <ul class="m-sources" id="brokkSources"></ul>
+      </div>
+
+      <div id="anatomyPrinter" hidden>
+        <p class="eyebrow">Layout · FieldPrinter</p>
+        <h2 class="anatomy-title">Sådan er FieldPrinter bygget op</h2>
+        <p class="catalog-lead anatomy-lead">
+          Træk for at dreje. Scroll zoomer. Klik et led for at læse det.
+          Træk <em>Skil ad</em> for at skille de beskrevne dele ad:
+          bælter, kasse, tracker/sensorer, printarm og printhoved.
+        </p>
+        <p class="anatomy-note">
+          3D-modellen er en skematisk rekonstruktion efter Dustys fotos og FCC-manual
+          (ikke officiel CAD). Nøjagtighed og komponenter kommer fra Dusty support og produktsider.
+        </p>
+
+        <div class="anatomy-stage">
+          <div class="anatomy-figure" id="printerCanvasWrap"></div>
+          <aside class="anatomy-panel">
+            <p class="bp-sub" id="printerPanelSub">Oversigt</p>
+            <h3 class="bp-panel-title" id="printerPanelTitle">FieldPrinter anatomi</h3>
+            <label class="bp-explode">
+              Skil ad
+              <input id="printerExplode" type="range" min="0" max="100" value="0" step="1">
+            </label>
+            <p class="bp-panel-text" id="printerPanelText">
+              Træk slideren for at skille de beskrevne komponenter ad — printhovedet forbliver
+              ét hoved, løsnet fra armen, armen fra kassen. Klik en del på robotten.
+            </p>
+            <ul class="bp-specs" id="printerPanelSpecs"></ul>
+          </aside>
+        </div>
+
+        <p class="m-section-title">Kilder</p>
+        <ul class="m-sources" id="printerSources"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer wrap">
+    Astron Robotics — en uafhængig oversigt, ikke en anbefaling fra producenterne selv.
+    Spørgsmål? <a class="footer-contact" href="mailto:kontakt@astronrobotics.dk">kontakt@astronrobotics.dk</a>
+  </footer>
+
+  <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-backdrop" data-close="true"></div>
+    <div class="modal-panel modal-panel--catalog">
+      <button class="modal-close" data-close="true" aria-label="Luk">&times;</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/vendor/three.r128.min.js"></script>
+  <script src="js/anatomy3d.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>

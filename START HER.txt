@@ -1,0 +1,17 @@
+Astron Robotics — hjemmeside
+
+1. Pak denne mappe ud (hvis den stadig ligger i zip-filen).
+2. Dobbeltklik på index.html — så åbner Coming Soon-siden.
+3. Åbn robotter.html for kataloget og anatomi.
+4. Åbn projekter.html for projekter/kanban.
+
+Hvis 3D-modellen eller YouTube-videoerne ikke virker, er det fordi
+browseren åbnede filen direkte. Start i stedet en lille server:
+
+  1. Åbn Terminal
+  2. Skriv:  cd (træk mappen ind i Terminal)  og tryk Enter
+  3. Skriv:  python3 -m http.server 8000
+  4. Åbn http://127.0.0.1:8000/robotter.html i browseren
+
+Live på nettet:
+  https://robertwahlgren.github.io/astronrobotics.dk/

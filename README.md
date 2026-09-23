@@ -1,21 +1,23 @@
-# Astron Robotics
+# astronrobotics.dk
 
-Dark futuristic marketing site for humanoid robotics in construction. Features a cinematic **Coming Soon** splash with particle canvas, Montserrat typography, cyan accents, responsive robot catalog, and interactive Kanban board (with localStorage persistence).
+Aktuel live-side (Vercel): Coming Soon, byggekataloget (**Robotter**) og intern Kanban-fane.
 
-**Visual vibe** matches the reference (dark radial overlay, glowing cyan, particles with mouse interaction) while using 100% original Danish/English copy and implementation.
+Mappen er firmaets offentlige site — ikke hjemmepleje-prototypen.
 
-## Run locally
+## Kør lokalt
+
+Åbn `index.html` i browseren, eller:
 
 ```bash
-python3 serve.py
+python3 -m http.server 8000
 ```
 
-Open http://127.0.0.1:8766
+Derefter:
 
-- `index.html` — immersive splash with particles
-- `robotter.html` — responsive robot card grid
-- `projekter.html` — drag-and-drop Kanban (press **N** to add demo cards)
+- [http://localhost:8000](http://localhost:8000) — Coming Soon
+- [http://localhost:8000/robotter.html](http://localhost:8000/robotter.html) — katalog + anatomi
+- [http://localhost:8000/projekter.html](http://localhost:8000/projekter.html) — Kanban
 
-All pages share `css/site.css`. Pure static HTML/CSS/JS — ready for GitHub Pages.
+## Publicér
 
-Built as an original Astron Robotics experience.
+Træk hele mappen ind i det eksisterende Vercel-projekt (samme sted `background.jpg` og `index.html` ligger i dag).

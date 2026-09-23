@@ -1,0 +1,12 @@
+Brokk- og FieldPrinter-3D i anatomi-fanen er skematiske rekonstruktioner
+bygget til klikbar explode-anatomi — ikke officiel producent-CAD og ikke
+fotogrammetri af en bestemt serienummer-maskine.
+
+Brokk: proportioner og ledkæde efter Brokk 200-klassen (offentlige mål:
+2100 kg, 780 mm min. bredde, treleddet arm, BHB-hammer). Familien 70–900
+deler anatomien, ikke skalaen.
+
+FieldPrinter: bælteplatform, kasse, tracker-reflektor og printhoved efter
+Dustys egne fotos, FCC-manualens komponentliste og support-artikler.
+
+Tal i panelet kommer fra kildelisten under hver anatomi, ikke fra mesh'et.
